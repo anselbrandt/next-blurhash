@@ -13,7 +13,6 @@ interface ImageSize {
 }
 
 const Test: NextPage<TestProps> = ({ src }) => {
-  if (typeof window === "undefined") return null;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [image, setImage] = useState<HTMLImageElement>();
   const [hash, setHash] = useState<string>();
@@ -26,7 +25,7 @@ const Test: NextPage<TestProps> = ({ src }) => {
     img.onload = () => {
       setImage(img);
     };
-  }, []);
+  }, [src]);
 
   useEffect(() => {
     if (!image || !canvasRef.current) return;
@@ -45,7 +44,7 @@ const Test: NextPage<TestProps> = ({ src }) => {
       4
     );
     setHash(imageHash);
-  }, [image, canvasRef.current]);
+  }, [image]);
 
   return (
     <div>
