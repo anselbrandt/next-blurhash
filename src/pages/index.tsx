@@ -1,10 +1,14 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Image from "next/image";
+import { Blurhash } from "react-blurhash";
 
 const Test = dynamic(() => import("../components/test"), {
   ssr: false,
 });
+
+const serverHash = "U9GIY:ISwhMv*GJDD6E3?tyEDOtS?ZW@8{Rk";
 
 const Home: NextPage = () => {
   return (
@@ -20,14 +24,22 @@ const Home: NextPage = () => {
           <div>
             <Test src={"./img1.jpg"} />
           </div>
-          <div>
-            <Test src={"./img2.jpg"} />
+          <div className="m-4">
+            <div>Generated on the server:</div>
+            <div>{serverHash}</div>
           </div>
-          <div>
-            <Test src={"./img3.jpg"} />
+          <div className="m-4">
+            <Blurhash
+              hash={serverHash}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+              width={240}
+              height={204}
+            />
           </div>
-          <div>
-            <Test src={"./img4.jpg"} />
+          <div className="m-4">
+            <Image src="/limecat.jpg" alt="Lime cat" width={240} height={204} />
           </div>
         </div>
       </div>
