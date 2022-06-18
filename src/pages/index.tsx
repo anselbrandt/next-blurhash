@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex h-full justify-center items-center">
         <div>
-          <div className="m-4"></div>
+          <div className="m-4">Browser hash generation is slow</div>
           <div>
             <Test src={"./img1.jpg"} />
           </div>
