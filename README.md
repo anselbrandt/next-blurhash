@@ -13,7 +13,6 @@ const { encode } = require("blurhash");
 async function main() {
   const image = await loadImage("./limecat.jpg");
   const { naturalWidth: width, naturalHeight: height } = image;
-  console.log(width, height);
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
   ctx.drawImage(image, 0, 0, width, height);
